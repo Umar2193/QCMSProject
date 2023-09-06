@@ -1,0 +1,362 @@
+﻿
+fieldset {
+    border: 1px solid #add8e6 !important;
+    padding: 0 3px 3px 3px !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+}
+
+.chosen-container-single .chosen-default {
+    background: white !important;
+}
+
+.chosen-container-single .chosen-single {
+    background: white !important;
+}
+
+.chosen-container-single .chosen-single span {
+        margin-top: -2px;
+        color: #434C56 !important;
+        font-size:15px !important;
+}
+
+.chosen-container-single .chosen-single {
+    border: 1px solid #434C56 !important
+}
+
+.form-control {
+    border: 1px solid #434C56 !important;
+    height:25px !important;
+}
+
+legend {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+    float: none;
+    color: #5c9ccc;
+}
+
+.nav-link {
+    background-color: #dfeffc !important;
+    color: black;
+    margin-right: 3px;
+}
+
+    .nav-link.active {
+        color: white !important;
+        background-color: #5c9ccc !important;
+    }
+
+.alert-danger {
+    color: #842029 !important;
+    background-color: #f8d7da !important;
+    border-color: #f5c2c7;
+}
+
+.largmodal {
+    max-width: 1100px !important;
+}
+
+.pull-right {
+    float: right;
+}
+
+label {
+    font-weight: bold;
+    color: #5c9ccc;
+}
+
+.fa {
+    color: #201e1e;
+}
+
+.mediummodal {
+    max-width: 900px !important;
+}
+
+.modal-header {
+    background-color: #5c9ccc;
+    color: white;
+}
+
+.modal-title {
+    color: white;
+}
+
+.style-scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #5c9ccc;
+    border-radius: 10px;
+}
+
+.style-scroll::-webkit-scrollbar {
+    width: 10px;
+    background-color: #5c9ccc;
+    height: 10px;
+}
+
+.style-scroll::-webkit-scrollbar-thumb {
+    background-color: lightblue;
+    border-radius: 10px;
+}
+
+.chosen-container {
+    width: 100% !important;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    zoom: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.chosen-single {
+    height: 38px !important;
+    background-color: white !important;
+    line-height: 34px !important;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(255,255,255,0.8) url("/TemplateContent/img/loader.gif") center no-repeat;
+}
+/* Turn off scrollbar when body element has the loading class */
+body.loading {
+    overflow: hidden;
+}
+    /* Make spinner image visible when body element has the loading class */
+    body.loading .overlay {
+        display: block;
+    }
+
+.QA_section .QA_table .table thead th {
+    background: white !important;
+    color: grey !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+
+.QA_section .QA_table .table td, .QA_section .QA_table .table th {
+    padding: 8px !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    color: #fff !important;
+    border: 1px solid #4C6EF8;
+    background-color: darkgrey !important;
+}
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        color: #fff !important;
+        border: 1px solid #4C6EF8;
+        background-color: darkgrey !important;
+    }
+
+.main_content .main_content_iner {
+    padding: 3px 2px !important;
+}
+
+.header_iner {
+    padding: 12px !important;
+    display: none !important;
+}
+
+.ui-pg-div .fa-search {
+    display: none !important;
+}
+
+input[type=text] .editable {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#companynavtab .nav-link {
+    padding: 0.25rem 0.5rem !important;
+}
+
+.form-control {
+    padding: 2px 2px !important;
+}
+
+.chosen-container-single .chosen-single {
+    height: 29px !important;
+}
+
+.btn {
+    padding: 3px 5px !important;
+}
+
+.white_box {
+    padding: 5px !important;
+}
+
+
+
+.sidebar #sidebar_menu > li a {
+    font-size: 13px !important;
+    margin-left: 6px !important;
+}
+
+.sidebar #sidebar_menu > li ul li a {
+    font-size: 12px !important;
+}
+
+.sidebar #sidebar_menu > li ul {
+    margin-left: 8px !important;
+}
+
+
+
+
+#dataTables-Companytbl tbody tr :hover {
+    cursor: pointer;
+}
+
+table.dataTable tbody tr.selectedrow {
+    background-color: #fad42e !important;
+    color: white !important;
+}
+
+.QA_section .QA_table tbody th, .QA_section .QA_table tbody tr.selectedrow td {
+    color: white !important;
+}
+
+table.dataTable tbody tr.selectedrow .fa {
+    color: white !important;
+}
+
+table.dataTable thead .sorting_desc {
+}
+
+#dataTables-Companytbl tbody tr.selectedrow :hover {
+    cursor: pointer;
+    background-color: #918c8c !important;
+    color: white !important;
+}
+
+.footer_part {
+    background: #5c9ccc !important;
+}
+
+    .footer_part .footer_iner.text-center {
+        background: #5c9ccc !important;
+    }
+
+.sidebar #sidebar_menu > li ul li a.active {
+    color: #5c9ccc !important;
+}
+
+#jqGridtblCompanyGrid .fa-square-o:before {
+    content: "" !important;
+}
+
+#jqGridtblCompanyGrid .fa-check-square-o::before {
+    content: "" !important;
+}
+
+#jqGridtblCompanyGrid .fa-square-o {
+    content: "" !important;
+    background: url(../img/unchecknew.png) no-repeat;
+    height: 18px;
+    width: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+#jqGridtblCompanyGrid .fa-check-square-o {
+    content: "" !important;
+    background: url(../img/checkednew.png) no-repeat;
+    height: 18px;
+    width: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.jqgridcheckicon {
+    background: url(../img/checkednew.png) no-repeat;
+    height: 18px;
+    width: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.jqgriduncheckicon {
+    background: url(../img/unchecknew.png) no-repeat;
+    height: 18px;
+    width: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.jqgridediticon {
+    background: url(../img/Editiconnew.png) no-repeat;
+    height: 18px;
+    width: 20px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.paginate_button.previous {
+    display:none !important;
+}
+
+.paginate_button.next {
+    display: none !important;
+}
+
+
+.extralargmodal {
+    max-width: 1500px !important;
+}
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+.table td, .table th {
+    padding:3px !important;
+}
+.table-bordered {
+    border-color:white;
+}
+table tr.selectedrow {
+    border: 1px solid #fad42e;
+    background: #fbec88 !important;
+    color: #363636;
+}
+
+.modal-content {
+    border: 3px solid darkblue !important;
+    border-top:none !important;
+}

@@ -1,0 +1,56 @@
+﻿@model List<Entity.CallsPromptsEntity>
+@{
+    Layout = null;
+}
+<div class="QA_section">
+    <div class="QA_table mb_30">
+        <table class="table  table-striped cell-border" id="dataTables-CallPrompttbl">
+            <thead>
+                <tr>
+                    <th scope="col">CallID</th>
+                    <th scope="col">People</th>
+                    <th scope="col">Call When</th>
+                    <th scope="col">Staff</th>
+                    <th scope="col">CallNotes</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr ondblclick="alert('Calls Prompt form')" data-CallID="@item.CallID">
+                            <td scope="row">@item.CallID</td>
+                            <td scope="row">@item.PeopleName</td>
+                            <td scope="row">@item.CallWhen</td>
+                            <td>
+                                @item.StaffName
+                            </td>
+                            <td>
+                            
+                                @item.CallNotes
+                            </td>
+                           
+                        </tr>
+
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="alert alert-danger text-center" colspan="20">No Record Found</td>
+                    </tr>
+                }
+
+
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+    });
+
+</script>

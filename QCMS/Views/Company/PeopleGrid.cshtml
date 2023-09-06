@@ -1,0 +1,65 @@
+﻿@model List<Entity.PeopleEntity>
+@{
+    Layout = null;
+}
+<div class="QA_section">
+    <div class="QA_table mb_30">
+        <table class="table  table-striped cell-border" id="dataTables-Peopletbl">
+            <thead>
+                <tr>
+                    <th scope="col">People ID</th>
+                    <th scope="col">People Title</th>
+                    <th scope="col">People Initials</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">People Mobile</th>
+                    <th scope="col">People Email</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr  ondblclick="alert('people form')" data-PeopleId="@item.PeopleId">
+                            <td scope="row">@item.PeopleId</td>
+                            <td scope="row">@item.PeopleTitle</td>
+                            <td>
+                                @item.PeopleInitials
+                            </td>
+
+                            <td>
+                                @{
+                                    var _cont = item.PeopleForename + " " + item.PeopleLastname;
+                                }
+                                @_cont
+                            </td>
+                            <td>
+                                @item.PeopleMobile
+                            </td>
+                            <td>
+                                @item.PeopleEmail
+                            </td>
+
+                        </tr>
+
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="alert alert-danger text-center" colspan="20">No Record Found</td>
+                    </tr>
+                }
+
+
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+    });
+
+</script>

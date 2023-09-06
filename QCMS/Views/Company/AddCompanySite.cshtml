@@ -1,0 +1,147 @@
+﻿@model List<Entity.Location>
+@{
+    Layout = null;
+}
+<style>
+    #tblsite_new td, #tblsite_new th {
+        padding: 2px !important;
+    }
+</style>
+<div class="col-lg-12">
+    <div class="white_card card_height_100 mb_30">
+        <div class="white_card_body" style="padding-bottom:0px;">
+            <div class="card-body">
+                <form>
+                    <div class="row col-md-12 mb-3">
+                        <div class="col-md-12">
+                            <div class=" form-group row col-md-12">
+                                
+                                <div class="col-md-10">
+                                    
+                                    <h3 style="color:darkblue;border:1px solid;padding:12px" id="_siteCompanyName">@ViewBag.CompanyName</h3>
+                                </div>
+                                <div class="col-md-2">
+                                    <h3 style="color:darkblue;margin-top:10px;" id="_siteCompanyId">@ViewBag.CompanyId</h3>
+                                </div>
+                               
+                            </div>
+                        </div>
+                      
+
+                    </div>
+                    <div class="row col-md-12 mb-3">
+                        <div class="col-md-12">
+                            <div class=" form-group row col-md-12">
+                                <label class="form-label col-md-2" for="CompanyId">Add New Site</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control " id="SiteName" name="SiteName"  >
+                                   
+                                </div>
+                                <div class="col-md-3">
+                                    <input onclick="AddCompanySiteFromSiteForm('@ViewBag.CompanyId')" class="btn btn-primary col col-md-8" style="height:35px;margin-left:2px" type="button" value="Add Site" />
+                                 </div>
+
+                            </div>
+                        </div>
+                        
+
+                    </div>
+
+                  
+                    <div class="row col-md-12 mb-3">
+                      
+                        <div class="row col-md-12">
+                            <label class="form-label col-md-2" for="sitlabel">Site Name:</label>
+                            <div class="col-md-8 style-scroll" style="height:250px;overflow:scroll;border:1px solid;overflow-x:hidden;padding:0px;background-color:lightgray">
+                                <div style="position: sticky; top: 0; background-color: grey;color:white">Sites</div>
+                                <table id="tblsite_new" class="table">
+                                    <thead>
+                                        <tr>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody id="companysitestbltrtd_sites">
+                                        @if (Model != null && Model.Count > 0)
+                                        {
+                                            foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @item.ContractLocation
+                                                    </td>
+                                                </tr>
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td>No Sites</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <hr  style="margin-top:20px;" />
+
+                    <div class="row col-md-12 mb-3">
+                        <div class="col-md-12">
+                            <input data-bs-dismiss="modal" class="btn btn-danger col col-md-2" style="margin-left:2px;float:right" type="button" value="Cancel" />
+
+                        </div>
+                    </div>
+                  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function AddCompanySiteFromSiteForm(CompanyID) {
+        if ($('#SiteName').val() == null || $('#SiteName').val() == "" || $('#SiteName').val().trim() == "") {
+            toastr.error("Please enter site name")
+            return;
+        }
+        if (CompanyID == null || CompanyID ==  "" || CompanyID == "0") {
+            return;
+        }
+        $.ajax({
+            url: "/Company/SaveCompanySite",
+            data: { CompanyID: CompanyID, CompanyName: $('#SiteName').val() },
+            success: function (result) {
+                if(result == -2){
+                    //already exist
+                    toastr.error('Site Name already Exists..!!!');
+                    return;
+                }
+                else if (result > 0){
+                    //success
+                    toastr.success('Record saved scuccessfully..!!!');
+                    GetCompanySites(CompanyID);
+                    $('#MediumModalPopup').modal('hide');
+                    return;
+                }
+                else {
+                    //fail
+                    toastr.error('Some Error Occur');
+                }
+               
+               
+            },
+            error: function (result) {
+
+            },
+            beforeSend: function () {
+
+            },
+            complete: function (result) {
+
+            }
+        });
+    }
+</script>

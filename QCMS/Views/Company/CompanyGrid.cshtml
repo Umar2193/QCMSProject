@@ -1,0 +1,117 @@
+﻿@model List<Entity.CompanyEntity>
+@{
+    Layout = null;
+}
+<div class="QA_section">
+    <div class="QA_table mb_30">
+        <table class="table  table-striped cell-border" id="dataTables-Companytbl">
+            <thead>
+                <tr>
+                    <th scope="col">Company ID</th>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Company Town</th>
+                    <th scope="col">Company PostCode</th>
+                    <th scope="col">Cus</th>
+                    <th scope="col">Sup</th>
+                    <th scope="col">Sub</th>
+                    <th scope="col">Enq</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                      
+                            <tr ondblclick="CompanyDetail('@item.CompanyId','@item.CompanyName')" data-CompanyID="@item.CompanyId">
+                                <td scope="row">
+                                
+                                @if (item.CompanyId != null && item.CompanyId.StartsWith("C"))
+                                {
+                                    <span class="badge bg-success" title="Contract">C</span>
+                                }
+                                else if (item.CompanyId != null && item.CompanyId.StartsWith("M"))
+                                {
+                                    <span class="badge bg-success" title="Maintenance">M</span>
+                                }
+                                @item.CompanyId
+                                    </td>
+                                <td style="width:25%">
+                               
+                                @item.CompanyName
+                                </td>
+
+                            <td style="width:15%">
+                                    @item.CompanyTown
+                                </td>
+                                <td>
+                                    @item.CompanyPostCode
+                                </td>
+                            @if(item.CompanyIsCustomer){
+                              <td>
+                                Y
+                                </td>
+                            }
+                            else
+                            {
+                                <td>N</td>
+                            }
+                            @if (item.CompanyIsSupplier)
+                            {
+                                <td>
+                                    Y
+                                </td>
+                            }
+                            else
+                            {
+                                <td>N</td>
+                            }
+                            @if (item.CompanyIsSubcontractor)
+                            {
+                                <td>
+                                    Y
+                                </td>
+                            }
+                            else
+                            {
+                                <td>N</td>
+                            }
+                            @if (item.CompanyIsEnquirer)
+                            {
+                                <td>
+                                    Y
+                                </td>
+                            }
+                            else
+                            {
+                                <td>N</td>
+                            }
+                            <td>
+                                <i class="fa fa-edit" aria-hidden="true"></i> &nbsp;&nbsp;
+                                
+                            </td>
+                        </tr>
+                        
+
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="alert alert-danger text-center" colspan="20">No Record Found</td>
+                    </tr>
+                }
+
+
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+       
+    });
+
+</script>

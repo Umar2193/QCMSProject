@@ -1,0 +1,55 @@
+﻿@model List<Entity.PeopleEntity>
+@{
+    Layout = null;
+}
+<div class="QA_section">
+    <div class="QA_table mb_30">
+        <table class="table table-striped cell-border" id="dataTables-Peopletbl_History">
+            <thead style="position: sticky; top: 0; ">
+                <tr>
+                    <th scope="col">PeopleForename</th>
+                    <th scope="col">PeopleLastname</th>
+                    <th scope="col">PeopleJobTitle</th>
+                    <th scope="col">People Mobile</th>
+                     <th scope="col">Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr   data-PeopleId="@item.PeopleId">
+                            <td scope="row">@item.PeopleForename</td>
+                            <td scope="row">@item.PeopleLastname</td>
+                            <td>
+                                @item.PeopleJobTitle
+                            </td>
+
+                            <td>
+                                @item.PeopleMobile
+                            </td>
+                            <td><i title="Delete" style="color:red" class="fa fa-trash-alt"></i></td>
+                        </tr>
+
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="alert alert-danger text-center" colspan="20">No Record Found</td>
+                    </tr>
+                }
+
+
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTables-Peopletbl_History').DataTable();
+    });
+
+</script>

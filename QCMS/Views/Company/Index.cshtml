@@ -1,0 +1,203 @@
+﻿<head>
+  
+</head>
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                @* <div class="dashboard_header mb_10">
+                <div class="row">
+                <div class="col-lg-6">
+                <div style="display:none;" class="dashboard_header_title">
+                <h3>Company</h3>
+                </div>
+                </div>
+                <div class="col-lg-6">
+                <div class="dashboard_breadcam text-end">
+                <p><a href="">Forms</a> <i class="fas fa-caret-right"></i>Company</p>
+                </div>
+                </div>
+                </div>
+                </div>*@
+            </div>
+            <div class="row col-lg-12">
+                <div class="white_box mb_30">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12">
+                            <!-- sign_in  -->
+                            <div class="@*modal-content cs_modal*@">
+                                @* <div class="modal-header justify-content-center">
+                                <h5 class="modal-title text_white">Resister</h5>
+                                </div>*@
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row col col-lg-12 col-md-12">
+                                            <div class="col col-lg-2 col-md-2">
+                                                <label class="form-label" for="inputEmail4">
+                                                    CompanyID
+
+                                                </label>
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <label class="form-label" for="inputEmail4">
+                                                    Company Name
+
+                                                </label>
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <label class="form-label" for="inputEmail4">
+                                                    Company Town
+
+                                                </label>
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <label class="form-label" for="inputEmail4">
+                                                    Company PostalCode
+
+                                                </label>
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <label class="form-label" for="inputEmail4">
+                                                    Database Type
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row col col-lg-12 col-md-12">
+                                            <div class="col col-lg-2 col-md-2">
+
+                                                <select id="ddlComapnyID_index" onchange="LoadCompanyGrid()" data-placeholder="Choose..." class="form-control searchfiltercompany">
+                                                    <option value="" selected="">Choose...</option>
+                                                    @if (ViewBag.cmplst != null)
+                                                    {
+                                                        foreach (var item in ViewBag.cmplst)
+                                                        {
+                                                            <option value="@item.CompanyId">
+                                                                @item.CompanyId
+                                                            </option>
+                                                        }
+                                                    }
+
+
+                                                </select>
+
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <input type="text" onkeyup="LoadCompanyGrid()" class="form-control searchfiltercompany" id="txtCompanyName_index" placeholder="Company Name" autocomplete="off">
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <input type="text" onkeyup="LoadCompanyGrid()" class="form-control searchfiltercompany" id="txtCompanyTown_index" placeholder="Company Town" autocomplete="off">
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <input type="text" onkeyup="LoadCompanyGrid()" class="form-control searchfiltercompany" id="txtCompanyPostCode_index" placeholder="Company PostalCode" autocomplete="off">
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <select id="ddldatabaseID_index" onchange="LoadCompanyGrid()" data-placeholder="Choose..." class="form-control">
+                                                    <option value="" selected="">Choose...</option>
+                                                    <option value="C">Contract</option>
+                                                    <option value="M">Maintenance</option>
+
+
+                                                </select>
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <input class="btn btn-primary" style="/*float:right;*/" type="button" value="Search" onclick="LoadCompanyGrid();" />
+                                                <input class="btn btn-secondary" style="/*float:right;margin-left:3px;*/" type="button" value="Reset" onclick="ResetCompanyFilters();" />
+                                                
+
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+                        @*            <div class="row col col-lg-12 col-md-12" style="margin-top:20px">
+                                        <div class="col col-lg-12 col-md-12">
+                                            <input class="btn btn-secondary" style="float:right;margin-left:3px;" type="button" value="Reset" onclick="ResetCompanyFilters();" />
+                                            <input class="btn btn-primary" style="float:right;" type="button" value="Search" onclick="LoadCompanyGrid();" />
+
+                                        </div>
+
+
+                                    </div>*@
+                                    <div id="companynavtab" class="row col-lg-12 col-md-12" style="margin-top:20px;max-width:94%;">
+                                        <nav>
+                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Main Details</button>
+                                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Enquiries</button>
+                                                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contracts</button>
+                                                <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">Invoices</button>
+                                                <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-reports" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">Reports</button>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+
+                                                <div id="divtblCompanyGrid">
+                                                    @*@Html.Partial("CompanyGrid.cshtml",null)*@
+                                                    <table id="jqGridtblCompanyGrid"></table>
+                                                    <div id="jqGridtblCompanyGridpager"></div>
+
+                                                </div>
+
+                                                <span style="text-align:center;color:red;float:right;margin-top:24px">*Double-Click to view Client details</span>
+                                               @* <div class="row col-lg-12 col-md-12">
+                                                    <fieldset>
+                                                        <legend>Prompts Call</legend>
+                                                        <div id="divtblCallPromptGrid">
+                                                            @Html.Partial("PromptsCallGrid.cshtml",null)
+                                                        </div>
+                                                    </fieldset>
+
+                                                </div>
+                                                <div class="row col-12-12 col-md-12">
+                                                    <fieldset>
+                                                        <legend>People</legend>
+                                                        <div id="divtblPeopleGrid">
+                                                            @Html.Partial("PeopleGrid.cshtml",null)
+                                                        </div>
+                                                    </fieldset>
+
+                                                </div>*@
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">Enquiries Coming Soon...</div>
+                                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                                                <div style="margin-bottom:5px;margin-top:5px;">
+                                                <span style="text-align:left;color:red;padding-left:5px">Contract Details - Double-Click to view Contract details</span>
+                                                 <label id="lblCOmpanyName_Cntr" style="text-align:left;float:right;padding-right:10px;">Company Name</label>
+                                                </div>
+                                                <table id="jqGridtblContractGrid"></table>
+                                                <div id="jqGridtblContractGridpager"></div>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">Invoices Coming Soon...</div>
+                                            <div class="tab-pane fade" id="nav-reports" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">Reports Coming Sooms...</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var _CompanyID = '';
+    var _vcmpname = "";
+    var lastsel2;
+    var editor; // use a global for the submit and return data rendering in the examples
+    $(document).ready(function () {
+        $('#ddlComapnyID_index').chosen();
+        // $(".overlay").show();
+        //LoadCompanyGrid(true);
+        LoadCompanyJQGid();
+        LoadContractJQGid();
+    });
+
+</script>
+
+
+

@@ -1,0 +1,584 @@
+﻿<head>
+    <style>
+        #dataTables-Companytbl tbody tr :hover {
+            cursor: pointer;
+        }
+
+        table.dataTable tbody tr.selectedrow {
+            background-color: #918c8c !important;
+            color: white !important;
+        }
+
+        .QA_section .QA_table tbody th, .QA_section .QA_table tbody tr.selectedrow td {
+            color: white !important;
+        }
+
+        table.dataTable tbody tr.selectedrow .fa {
+            color: white !important;
+        }
+        table.dataTable thead .sorting_desc {
+        }
+
+        #dataTables-Companytbl tbody tr.selectedrow :hover {
+            cursor: pointer;
+            background-color: #918c8c !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-12">
+               @* <div class="dashboard_header mb_10">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div style="display:none;" class="dashboard_header_title">
+                                <h3>Company</h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="dashboard_breadcam text-end">
+                                <p><a href="">Forms</a> <i class="fas fa-caret-right"></i>Company</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+            <div class="row col-lg-12">
+                <div class="white_box mb_30">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12">
+                            <!-- sign_in  -->
+                            <div class="@*modal-content cs_modal*@">
+                                @* <div class="modal-header justify-content-center">
+                                <h5 class="modal-title text_white">Resister</h5>
+                                </div>*@
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row col col-lg-12 col-md-12">
+                                            <div class="col col-lg-3 col-md-3">
+                                                <label class="form-label" for="inputEmail4">
+                                                    CompanyID
+
+                                                </label>
+                                            </div>
+                                            <div class="col col-lg-3 col-md-3">
+                                                <label class="form-label" for="inputEmail4">
+                                                    Company Name
+
+                                                </label>
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <label class="form-label" for="inputEmail4">
+                                                    Company Town
+
+                                                </label>
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <label class="form-label" for="inputEmail4">
+                                                    Company PostalCode
+
+                                                </label>
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <label class="form-label" for="inputEmail4">
+                                                    Database Type
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row col col-lg-12 col-md-12">
+                                            <div class="col col-lg-3 col-md-3">
+
+                                                <select id="ddlComapnyID_index" onchange="LoadCompanyGrid()" data-placeholder="Choose..." class="form-control searchfiltercompany">
+                                                    <option value="" selected="">Choose...</option>
+                                                    @if (ViewBag.cmplst != null)
+                                                    {
+                                                        foreach (var item in ViewBag.cmplst)
+                                                        {
+                                                            <option value="@item.CompanyId">
+                                                                @item.CompanyId
+                                                            </option>
+                                                        }
+                                                    }
+
+
+                                                </select>
+
+                                            </div>
+                                            <div class="col col-lg-3 col-md-3">
+                                                <input type="text" onkeyup="LoadCompanyGrid()" class="form-control searchfiltercompany" id="txtCompanyName_index" placeholder="Company Name" autocomplete="off">
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <input type="text" onkeyup="LoadCompanyGrid()" class="form-control searchfiltercompany" id="txtCompanyTown_index" placeholder="Company Town" autocomplete="off">
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <input type="text" onkeyup="LoadCompanyGrid()" class="form-control searchfiltercompany" id="txtCompanyPostCode_index" placeholder="Company PostalCode" autocomplete="off">
+                                            </div>
+                                            <div class="col col-lg-2 col-md-2">
+                                                <select id="ddldatabaseID_index" onchange="LoadCompanyGrid()" data-placeholder="Choose..." class="form-control">
+                                                    <option value="" selected="">Choose...</option>
+                                                    <option value="C">Contract</option>
+                                                    <option value="M">Maintenance</option>
+
+
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+
+                                    </form>
+                                    <div class="row col col-lg-12 col-md-12" style="margin-top:20px">
+                                        <div class="col col-lg-12 col-md-12">
+                                            <input class="btn btn-secondary" style="float:right;margin-left:3px;" type="button" value="Reset" onclick="ResetCompanyFilters();" />
+                                            <input class="btn btn-primary" style="float:right;" type="button" value="Search" onclick="LoadCompanyGrid();" />
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row col-lg-12 col-md-12" style="margin-top:20px">
+                                        <nav>
+                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Main Details</button>
+                                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Enquiries</button>
+                                                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contracts</button>
+                                                <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">Invoices</button>
+                                                <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-reports" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">Reports</button>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content" id="nav-tabContent" >
+                                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+
+                                                <div id="divtblCompanyGrid">
+                                                    @Html.Partial("CompanyGrid.cshtml",null)
+
+                                                </div>
+
+                                                <span style="text-align:center;color:red;float:right;margin-top:-24px">*Double-Click to view Client details</span>
+                                                <div class="row col-lg-12 col-md-12">
+                                                    <fieldset>
+                                                        <legend>Prompts Call</legend>
+                                                        <div id="divtblCallPromptGrid">
+                                                            @Html.Partial("PromptsCallGrid.cshtml",null)
+                                                        </div>
+                                                    </fieldset>
+
+                                                </div>
+                                                <div class="row col-12-12 col-md-12">
+                                                    <fieldset>
+                                                        <legend>People</legend>
+                                                        <div id="divtblPeopleGrid">
+                                                            @Html.Partial("PeopleGrid.cshtml",null)
+                                                        </div>
+                                                    </fieldset>
+
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">Enquiries Coming Soon...</div>
+                                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">Contracts Coming Soon...</div>
+                                            <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">Invoices Coming Soon...</div>
+                                            <div class="tab-pane fade" id="nav-reports" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">Reports Coming Sooms...</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var _CompanyID = '';
+    var editor; // use a global for the submit and return data rendering in the examples
+    $(document).ready(function () {
+        $('#ddlComapnyID_index').chosen();
+        $(".overlay").show();
+        LoadCompanyGrid(true);
+    });
+
+    function LoadCompanyGrid(isdefaultload) {
+        $.ajax({
+            url: "/Company/CompanyGrid",
+            data: { CompanyID: $('#ddlComapnyID_index').val(), CompanyName: $('#txtCompanyName_index').val(), CompanyTown: $('#txtCompanyTown_index').val(), CompanyPostCode: $('#txtCompanyPostCode_index').val(), DatabaseType: $('#ddldatabaseID_index').val() },
+            success: function (result) {
+
+                $("#divtblCompanyGrid").html(result);
+                if (result != null && result.search('No Record Found') > 0) {
+                    return;
+                }
+                if ($.fn.DataTable.isDataTable('#dataTables-Companytbl')) {
+                    $('#dataTables-Companytbl').DataTable().destroy();
+                }
+
+                var tblcomp = $('#dataTables-Companytbl').DataTable({
+                    "pageLength": 25,
+                    bLengthChange: false,
+                    "bDestroy": true,
+                    language: {
+                        search: "<i class='ti-search'></i>",
+                        searchPlaceholder: 'Quick Search',
+                        paginate: {
+                            next: "<i class='ti-arrow-right'></i>",
+                            previous: "<i class='ti-arrow-left'></i>"
+                        }
+                    },
+                    columnDefs: [{
+                        visible: false
+                    }],
+                    responsive: true,
+                    searching: false,
+                });
+                $('#dataTables-Companytbl tbody').on('click', 'tr', function () {
+                    debugger
+                    if ($(this).hasClass('editrow')) {
+                       return false;
+                    }
+                    if ($(this).hasClass('selectedrow')) {
+                        $(this).removeClass('selectedrow');
+                    } else {
+                        tblcomp.$('tr.selectedrow').removeClass('selectedrow');
+                        $(this).addClass('selectedrow');
+                    }
+
+                    _CompanyID = $('#dataTables-Companytbl tbody tr.selectedrow').attr('data-companyid')
+                    if (_CompanyID != null && _CompanyID != "") {
+                        LoadPeopleGrid();
+                        LoadPromptGrid();
+                    }
+                });
+                $("#dataTables-Companytbl").on('mousedown.edit', "i.fa.fa-edit", function (e) {
+                    debugger
+                    $(this).removeClass().addClass("fa fa-save");
+                    var $row = $(this).closest("tr").off("mousedown");
+                    $row.addClass("editrow");
+                    var $tds = $row.find("td").not(':first').not(':last');
+
+                    $.each($tds, function (i, el) {
+                        var txt = $(this).text();
+                        $(this).html("").append("<input class='form-control' type='text' value=\"" + txt.trim() + "\">");
+                    });
+
+                });
+                $("#dataTables-Companytbl").on('mousedown.save', "i.fa.fa-save", function (e) {
+                    debugger
+                  
+                    var $row = $(this).closest("tr");
+                    var _dtCompanyID= $row.attr('data-companyid');
+                    var $tds = $row.find("td").not(':first').not(':last');
+
+                    var _txtCompanyName = "";
+                    var _txtCompanyTown = "";
+                    var _txtPostalCode = "";
+                    var _txtCus = "False";
+                    var _txtSup = "False";
+                    var _txtSub = "False";
+                    var _txtEnq = "False";
+                    var valid = true;
+                    $.each($tds, function (i, el) {
+                        debugger
+                        var txt = $(this).find("input").val()
+
+                        if (i == 0) {
+                            _txtCompanyName = txt;
+                            if (_txtCompanyName == null || _txtCompanyName == "") {
+                                toastr.error("Please enter company name");
+                                valid = false;
+                                return false;
+                            }
+                        }
+                        else if (i == 1) {
+                            _txtCompanyTown = txt;
+                        }
+                        else if (i == 2) {
+                            _txtPostalCode = txt;
+                        }
+                        else if (i == 3) {
+                            if (txt.toLowerCase() == 'y') {
+                                _txtCus = "True";
+                            }
+                            else if (txt.toLowerCase() == 'n') {
+
+                            }
+                            else {
+                                toastr.error("Please enter 'Y' or 'N' in Yes/No fields.");
+                                valid = false;
+                                return false;
+                            }
+
+                        }
+                        else if (i == 4) {
+                            if (txt.toLowerCase() == 'y') {
+                                _txtSup = "True";
+                            }
+                            else if (txt.toLowerCase() == 'n') {
+
+                            }
+                            else {
+                                toastr.error("Please enter 'Y' or 'N' in Yes/No fields.");
+                                valid = false;
+                                return false;
+                            }
+
+                        }
+                        else if (i == 5) {
+                            if (txt.toLowerCase() == 'y') {
+                                _txtSub = "True";
+                            }
+                            else if (txt.toLowerCase() == 'n') {
+
+                            }
+                            else {
+                                toastr.error("Please enter 'Y' or 'N' in Yes/No fields.");
+                                valid = false;
+                                return false;
+                            }
+                        }
+                        else if (i == 6) {
+                            if (txt.toLowerCase() == 'y') {
+                                _txtEnq = "True";
+                            }
+                            else if (txt.toLowerCase() == 'n') {
+
+                            }
+                            else {
+                                toastr.error("Please enter 'Y' or 'N' in Yes/No fields.");
+                                valid = false;
+                                return false;
+                            }
+                        }
+
+                    });
+                    if (valid) {
+                        $(this).removeClass().addClass("fa fa-edit");
+                        $row.removeClass("editrow");
+                        $.each($tds, function (i, el) {
+                            debugger
+                            var txt = $(this).find("input").val();
+                            $(this).html(txt);
+                        });
+
+                        $.ajax({
+                            url: "/Company/SaveCompanyDataFromGrid",
+                            type: 'POST',
+                            data: {
+                                CompanyId: _dtCompanyID, CompanyName: _txtCompanyName
+                                , CompanyTown: _txtCompanyTown
+                                , CompanyPostCode: _txtPostalCode
+                                , CompanyIsCustomer: _txtCus, CompanyIsSupplier: _txtSup
+                                , CompanyIsSubcontractor: _txtSub, CompanyIsEnquirer: _txtEnq
+                            },
+                            success: function (result) {
+                                if (result == -2) {
+                                    //already exist
+                                    toastr.error('Company Name already Exists..!!!');
+                                    return;
+                                }
+                                else if (result > 0) {
+                                    //success
+                                    toastr.success('Record saved scuccessfully..!!!');
+                                    
+                                }
+                                else {
+                                    //fail
+                                    toastr.error('Some Error Occur');
+                                }
+
+
+                            },
+                            error: function (result) {
+
+                            },
+                            beforeSend: function () {
+
+                            },
+                            complete: function (result) {
+
+                            }
+                        });
+                    }
+                });
+
+                //$('#button').click(function () {
+                //    tblcomp.row('.selected').remove().draw(false);
+                //});
+                //editor = new $.fn.dataTable.Editor({
+                //    ajax: "../php/staff.php",
+                //    table: "#dataTables-Companytbl",
+                //    fields: [{
+                //        label: "CompanyName",
+                //        name: "CompanyName"
+                //    }
+                //    ]
+                //});
+                if (isdefaultload) {
+                    $('#dataTables-Companytbl').find('tbody tr:first').click();
+                }
+            },
+            error: function (result) {
+
+            },
+            beforeSend: function () {
+
+            },
+            complete: function (result) {
+                $(".overlay").hide();
+            }
+        });
+    }
+    function LoadPeopleGrid() {
+        $.ajax({
+            url: "/Company/PeopleGrid",
+            data: { CompanyID: _CompanyID },
+            success: function (result) {
+
+                $("#divtblPeopleGrid").html(result);
+                if (result != null && result.search('No Record Found') > 0) {
+                    return;
+                }
+                if ($.fn.DataTable.isDataTable('#dataTables-Peopletbl')) {
+                    $('#dataTables-Peopletbl').DataTable().destroy();
+                }
+                var tblcomp = $('#dataTables-Peopletbl').DataTable({
+                    "pageLength": 5,
+                    bLengthChange: false,
+                    "bDestroy": true,
+                    language: {
+                        search: "<i class='ti-search'></i>",
+                        searchPlaceholder: 'Quick Search',
+                        paginate: {
+                            next: "<i class='ti-arrow-right'></i>",
+                            previous: "<i class='ti-arrow-left'></i>"
+                        }
+                    },
+                    columnDefs: [{
+                        visible: false
+                    }],
+                    responsive: true,
+                    searching: false,
+                });
+                $('#dataTables-Peopletbl tbody').on('click', 'tr', function () {
+                    debugger
+                    if ($(this).hasClass('selectedrow')) {
+                        $(this).removeClass('selectedrow');
+                    } else {
+                        tblcomp.$('tr.selectedrow').removeClass('selectedrow');
+                        $(this).addClass('selectedrow');
+                    }
+
+                    //_CompanyID = $('#dataTables-Companytbl tbody tr.selected').attr('data-companyid')
+                });
+
+                //$('#button').click(function () {
+                //    tblcomp.row('.selected').remove().draw(false);
+                //});
+
+            },
+            error: function (result) {
+
+            },
+            beforeSend: function () {
+
+            },
+            complete: function (result) {
+
+            }
+        });
+    }
+    function LoadPromptGrid() {
+        $.ajax({
+            url: "/Company/PromptsCallGrid",
+            data: { CompanyID: _CompanyID },
+            success: function (result) {
+                debugger
+
+                $("#divtblCallPromptGrid").html(result);
+                if (result != null && result.search('No Record Found') > 0) {
+                    return;
+                }
+                if ($.fn.DataTable.isDataTable('#dataTables-CallPrompttbl')) {
+                    $('#dataTables-CallPrompttbl').DataTable().destroy();
+                }
+                var tblcomp = $('#dataTables-CallPrompttbl').DataTable({
+                    "pageLength": 5,
+                    bLengthChange: false,
+                    "bDestroy": true,
+                    language: {
+                        search: "<i class='ti-search'></i>",
+                        searchPlaceholder: 'Quick Search',
+                        paginate: {
+                            next: "<i class='ti-arrow-right'></i>",
+                            previous: "<i class='ti-arrow-left'></i>"
+                        }
+                    },
+                    columnDefs: [{
+                        visible: false
+                    }],
+                    responsive: true,
+                    searching: false,
+                });
+                $('#dataTables-CallPrompttbl tbody').on('click', 'tr', function () {
+                    debugger
+                    if ($(this).hasClass('selectedrow')) {
+                        $(this).removeClass('selectedrow');
+                    } else {
+                        tblcomp.$('tr.selectedrow').removeClass('selectedrow');
+                        $(this).addClass('selectedrow');
+                    }
+
+                    //_CompanyID = $('#dataTables-Companytbl tbody tr.selected').attr('data-companyid')
+                });
+
+                //$('#button').click(function () {
+                //    tblcomp.row('.selected').remove().draw(false);
+                //});
+
+            },
+            error: function (result) {
+
+            },
+            beforeSend: function () {
+
+            },
+            complete: function (result) {
+
+            }
+        });
+    }
+    function CompanyDetail(CompanyID, CompanyName) {
+        $.ajax({
+            url: "/Company/AddNewCompany",
+            data: { CompanyID: CompanyID },
+            success: function (result) {
+                $('#LargeModalPopup').modal('show');
+                $('#LargeModalPopupTitle').html("Client Information for : " + CompanyName);
+                $('#LargeModalPopupBody').html(result);
+            },
+            error: function (result) {
+
+            },
+            beforeSend: function () {
+
+            },
+            complete: function (result) {
+
+            }
+        });
+    }
+    function ResetCompanyFilters() {
+        $('#ddlComapnyID_index').val('').trigger("chosen:updated");
+        $('#txtCompanyName_index').val('');
+        $('#txtCompanyTown_index').val('');
+        $('#txtCompanyPostCode_index').val('');
+    }
+</script>
+
+
+

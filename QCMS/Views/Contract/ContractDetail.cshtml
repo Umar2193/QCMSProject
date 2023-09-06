@@ -1,0 +1,278 @@
+﻿@model Entity.ContractDetailDTO
+@{
+    Layout = null;
+}
+<style>
+
+</style>
+
+<div class="row">
+    <div class="col col-md-6">
+        <fieldset style="/*height:256px;*/">
+            <legend>Contract</legend>
+            
+            <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractNumber">Contract Number</label>
+                    <div class="col-md-7">
+                        <input style="background-color:darkblue;color:white" type="text" class="form-control " id="ContractNumber" name="ContractNumber" value="@Model.contractEntity.ContractNumber" readonly>
+                    </div>
+
+                </div>
+            <div class="row col-md-12" style="margin-bottom:5px;">
+                <label class="form-label col-md-4" for="ContractLocation">Location</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control " id="ContractLocation" name="ContractLocation" value="@Model.contractEntity.ContractLocation" readonly>
+                </div>
+
+            </div>
+            <div class="row col-md-12" style="margin-bottom:5px;">
+                <label class="form-label col-md-4" for="ContractQuotationNo">Enquiry No</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control " id="ContractQuotationNo" name="ContractQuotationNo" value="@Model.contractEntity.ContractQuotationNo" readonly>
+                </div>
+
+            </div>
+            <div class="row col-md-12" style="margin-bottom:5px;">
+                <label class="form-label col-md-4" for="ContractPO">Purchase Order</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control " id="ContractPO" name="ContractPO" value="@Model.contractEntity.ContractPO" readonly>
+                </div>
+
+            </div>
+            <div class="row col-md-12" style="margin-bottom:5px;">
+                <label class="form-label col-md-4" for="ContractOrderDate">ContractOrderDate</label>
+                <div class="col-md-7">
+                    @{
+                        var currentorderdate = "";
+                        if (Model.contractEntity.ContractOrderDate !=null)
+                        {
+                        currentorderdate = Model.contractEntity.ContractOrderDate.Value.ToString("MM/dd/yyyy");
+                        }
+                    }
+                        <input type="text" class="form-control " id="ContractOrderDate" name="ContractOrderDate" value="@currentorderdate" readonly>
+                </div>
+
+            </div>
+            <div class="row col-md-12" style="margin-bottom:5px;">
+                <label class="form-label col-md-4" for="ContractSiteTelephone">Contract Telephone</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control " id="ContractSiteTelephone" name="ContractSiteTelephone" value="@Model.contractEntity.ContractSiteTelephone" readonly>
+                </div>
+
+            </div>
+        </fieldset>
+    </div>
+    <div class="col col-md-6">
+        <nav>
+            <div class="nav nav-tabs Cntrctaddresnav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-ContractAddress" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Contract_Address</button>
+                <button class="nav-link"  data-bs-toggle="tab" data-bs-target="#nav-InvoiceAddress" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Invoice_Address</button>
+
+            </div>
+        </nav>
+        <div class="tab-content Cntrctaddresstab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-ContractAddress" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractSiteAddressLines">InvoiceName</label>
+                    <div class="col-md-7">
+                        
+                        <input type="text" class="form-control " id="ContractSiteAddressLines" name="ContractSiteAddressLines" value="@Model.contractEntity.ContractSiteAddressLines" >
+                    </div>
+
+                </div>
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractSiteCounty">AddressLines</label>
+                    <div class="col-md-7">
+                        <textarea class="form-control " id="ContractSiteCounty" name="ContractSiteCounty" rows="2">@Model.contractEntity.ContractSiteCounty</textarea>
+             
+                    </div>
+
+                </div>
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractSiteContact">PostCode</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control " id="ContractSiteContact" name="ContractSiteContact" value="@Model.contractEntity.ContractSiteContact" >
+                    </div>
+
+                </div>
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractSiteTelephone">ContactTel</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control " id="ContractSiteTelephone" name="ContractSiteTelephone" value="@Model.contractEntity.ContractSiteTelephone" >
+                    </div>
+
+                </div>
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractManagedBy">ContractManagedBy</label>
+                    <div class="col-md-7">
+                        <select id="ContractManagedBy" onchange="" data-placeholder="Choose..." class="form-control">
+                        @if (ViewBag.StaffList != null)
+                        {
+                            foreach (var item in ViewBag.StaffList)
+                            {
+                                if (Model.contractEntity.ContractManagedBy == item.StaffId)
+                                {
+                                    <option selected value="@item.StaffId">
+                                        @item.Expr1
+                                    </option>
+                                }
+                                else
+                                {
+                                    <option value="@item.StaffId">
+                                        @item.Expr1
+                                    </option>
+                                }
+                              
+                            }
+                            
+                        }
+                        </select>
+
+                        
+                    </div>
+
+                </div>
+              
+            </div>
+            <div class="tab-pane fade" id="nav-InvoiceAddress" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractInvoiceName">InvoiceName</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control " id="ContractInvoiceName" name="ContractInvoiceName" value="@Model.contractEntity.ContractInvoiceName" >
+                    </div>
+
+                </div>
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractInvoiceAddressLines">AddressLines</label>
+                    <div class="col-md-7">
+                        <textarea class="form-control " id="ContractInvoiceAddressLines" name="ContractInvoiceAddressLines" rows="2">@Model.contractEntity.ContractInvoiceAddressLines</textarea>
+                        @*<input type="text" class="form-control " id="ContractInvoiceAddressLines" name="ContractInvoiceAddressLines" value="@Model.contractEntity.ContractInvoiceAddressLines" >*@
+                    </div>
+
+                </div>
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractInvoicePostCode">PostCode</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control " id="ContractInvoicePostCode" name="ContractInvoicePostCode" value="@Model.contractEntity.ContractInvoicePostCode" >
+                    </div>
+
+                </div>
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractInvoiceContact">Contact</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control " id="ContractInvoiceContact" name="ContractInvoiceContact" value="@Model.contractEntity.ContractInvoiceContact" >
+                    </div>
+
+                </div>
+                <div class="row col-md-12" style="margin-bottom:5px;">
+                    <label class="form-label col-md-4" for="ContractInvoiceContactTel">ContactTel</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control " id="ContractInvoiceContactTel" name="ContractInvoiceContactTel" value="@Model.contractEntity.ContractInvoiceContactTel" >
+                    </div>
+
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col col-md-12">
+        <nav>
+            <div class="nav nav-tabs Cntrctaddresnav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-sales" type="button" role="tab" aria-controls="nav-home" aria-selected="false">Sales</button>
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-PurchaseOrder" type="button" role="tab" aria-controls="nav-profile" aria-selected="true">Purchase Order</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-Invoice" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Invoice</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-Notes" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Notes</button>
+
+            </div>
+        </nav>
+        <div class="tab-content Cntrctaddresstab-content" id="nav-tabContent">
+            <div class="tab-pane fade " id="nav-sales" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+               Sales Coming soon......
+
+            </div>
+            <div class="tab-pane fade show active" id="nav-PurchaseOrder" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                <div class="QA_table mb_30 style-scroll"  style="height:160px;overflow:auto;background:#dfeffc; overflow-x:hidden;  ">
+                    <table class="table cell-border table-bordered" id="PurchaseorderSearchtbl" style="font-size:12px;">
+                        <thead style="position: sticky; top: 0;color:black;background:#5c9ccc ">
+                            <tr>
+                                <th scope="col">PurchaseId</th>
+                                <th scope="col">CompanyName</th>
+                                <th scope="col">PurchaseOrderDate</th>
+                                <th scope="col">TotalPurchase</th>
+                            </tr>
+                        </thead>
+                        <tbody style="cursor:pointer">
+                            @{
+                                decimal totalpurchasecost = 0;
+                            }
+                            @if (Model != null && Model.lstPurcaseOrder.Count > 0)
+                            {
+                               
+                                foreach (var item in Model.lstPurcaseOrder)
+                                {
+                                    totalpurchasecost = totalpurchasecost + item.TotalPurchase;
+                                    <tr onclick="ClickEventForContractDetailPurchaseList(this)" ondblclick="PurchaseOrderDetail('@item.PurchaseId','@item.PurchaseContractNumber','@item.PurchaseCompanyId')" data-CompanyID="@item.PurchaseCompanyId">
+                                        <td scope="row">
+
+
+                                            @item.PurchaseId
+                                        </td>
+                                        <td>
+
+                                            @item.CompanyName
+                                        </td>
+                                        <td>
+                                            @if (@item.PurchaseOrderDate !=null)
+                                            {
+                                                @item.PurchaseOrderDate.Value.ToString("MM/dd/yyyy")
+                                            }
+
+                                            
+                                        </td>
+                                        <td>
+
+                                            $@item.TotalPurchase.ToString("0.00")
+                                        </td>
+
+                                    </tr>
+
+
+                                }
+                              
+                            }
+
+                            else
+                            {
+                                <tr>
+                                    <td class="alert alert-danger text-center" colspan="20">No Record Found</td>
+                                </tr>
+                            }
+                          
+
+                    </table>
+                </div>
+               <div class="row">
+                  
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <div class="col-md-7"></div>
+                        <label style="font-size: 12px" class="form-label col-md-2" for="totalpurchasecost">Total Purhase Order Cost</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control " readonly id="totalpurchasecost" name="totalpurchasecost" value="£@totalpurchasecost.ToString("0.00")">
+                        </div>
+
+                    </div>
+               
+                </div>
+               
+            </div>
+            <div class="tab-pane fade" id="nav-Invoice" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                Invoice Coming Sooon....
+            </div>
+            <div class="tab-pane fade " id="nav-Notes" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                Notes Coming Sooon....
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,363 @@
+﻿@model Entity.PurchaseOrderDTO
+@{
+    Layout = null;
+}
+<div style="z-index:1080" class="modal fade" id="PiceChangeSmallModalPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog smallmodal" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PiceChangeSmallModalPopupTitle">Update Quantity</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="PiceChangeSmallModalPopupBody" class="modal-body">
+                <div class="row col-md-12">
+                    <div class="col-md-3">
+                    <input id="_prPurchaseProductID" class="form-control"  type="text" readonly style="background:darkblue;color:white" />
+                    </div>
+                    <label id="_prlblProductName" style="color:darkblue;" class="form-label col-md-9"></label>
+                </div>
+                <div class="row col-md-12">
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4">Original Product Price</label>
+                        <div class="col-md-7">
+                        <input id="_prOrginalProductPrice" class="form-control" type="text" value="" readonly />
+                        </div>
+                    </div>
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4">New Product Price</label>
+                        <div class="col-md-7">
+                            <input id="_prNewProductPrice" class="form-control" type="number" step=".01" value="" />
+                        </div>
+                    </div>
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4">Quantity</label>
+                        <div class="col-md-7">
+                            <input id="_prQuantity" pattern="[0-9]" class="form-control" type="number" value="" />
+                        </div>
+                    </div>
+                    <span style="color:red">Note setting a new product price will result with the Product havig a new amount</span>
+                    <div class="row col-md-12" style="margin-top:5px;">
+                        <label class="form-label col-md-5"></label>
+                        <div class="col-md-6" style="margin-right:15px;">
+                            <input type="checkbox" class="" /> <span style="color:red"> Update Product Inventory </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="SaveUpdatedQuantity()">OK</button>
+                <button type="button" class="btn btn-secondary" onclick=" $('#PiceChangeSmallModalPopup').modal('hide');">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class=" col-md-10">
+        <fieldset style="padding-left:8px;">
+            <legend>Purchase Order</legend>
+
+            <div class="row col-md-12" id="frmPurchaseDetail">
+                <div class="row col-md-6">
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4" for="PurchaseId">PurchaseId</label>
+                        <div class="col-md-7">
+
+                            <input style="background:lightyellow" type="text" readonly  class="form-control " id="PurchaseId" name="PurchaseId" value="@Model.purchaseOrderEntity.PurchaseId">
+                        </div>
+
+                    </div>
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4" for="PurchaseContractNumber">PurchaseContractNo</label>
+                        <div class="col-md-7">
+
+                            <input type="text" readonly style="background:lightyellow" class="form-control " id="PurchaseContractNumber" name="PurchaseContractNumber" value="@Model.purchaseOrderEntity.PurchaseContractNumber">
+                        </div>
+
+                    </div>
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4" for="PurchaseCompanyId">CompanyName</label>
+                        <div class="col-md-7">
+                            <select style="pointer-events:none;" id="PurchaseCompanyId"  onchange="" data-placeholder="Choose..." class="form-control">
+                               
+                                @if (ViewBag.cmplst != null)
+                                {
+                                    foreach (var item in ViewBag.cmplst)
+                                    {
+                                        if (Model.purchaseOrderEntity.PurchaseCompanyId == item.CompanyId)
+                                        {
+                                            <option selected value="@item.CompanyId">
+                                                @item.CompanyName
+                                            </option>
+                                        }
+                                        else
+                                        {
+                                            <option  value="@item.CompanyId">
+                                                @item.CompanyName
+                                            </option>
+                                        }
+                                    }
+                                }
+
+
+                            </select>
+                           
+                        </div>
+
+                    </div>
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4" for="PurchaseOrderDate">PurchaseOrderDate</label>
+                        <div class="col-md-7">
+                            @{
+                                var currentorderdate = "";
+                                if (Model.purchaseOrderEntity.PurchaseOrderDate != null)
+                                {
+                                    currentorderdate = Model.purchaseOrderEntity.PurchaseOrderDate.Value.ToString("MM/dd/yyyy");
+                                }
+                            }
+                            <input type="text" class="form-control " id="PurchaseOrderDate" name="PurchaseOrderDate" value="@currentorderdate">
+                        </div>
+
+                    </div>
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4" for="PurchaseRequiredDate">PurchaseRequiredDate</label>
+                        <div class="col-md-7">
+                            @{
+                                var currentrequiredate = "";
+                                if (Model.purchaseOrderEntity.PurchaseRequiredDate != null)
+                                {
+                                    currentrequiredate = Model.purchaseOrderEntity.PurchaseRequiredDate.Value.ToString("MM/dd/yyyy");
+                                }
+                            }
+                            <input type="text" class="form-control " id="PurchaseRequiredDate" name="PurchaseRequiredDate" value="@currentrequiredate">
+                        </div>
+
+                    </div>
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4" for="PurchaseOrderDate">PurchaseRequiredTime</label>
+                        <div class="col-md-7">
+
+                            <input type="text" class="form-control " id="PurchaseRequiredTime" name="PurchaseRequiredTime" value="@Model.purchaseOrderEntity.PurchaseRequiredTime">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row col-md-5">
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4" for="PurchaseOrderNotes">Order_Notes</label>
+                        <div class="col-md-7">
+                            @{
+                                var txt1 = @Model.purchaseOrderEntity.PurchaseOrderNotes;
+                                if (!string.IsNullOrEmpty(txt1))
+                                {
+                                    txt1 = txt1.Trim();
+                                }
+                            }
+                            <textarea class="" rows="3" cols="50" id="PurchaseOrderNotes" name="PurchaseOrderNotes"> @txt1</textarea>
+
+                        </div>
+
+                    </div>
+                    <div class="row col-md-12" style="margin-bottom:5px;">
+                        <label class="form-label col-md-4" for="PurchaseDeliveryAddress">Delivery_Adderss</label>
+                        <div class="col-md-7">
+                            @{
+                                var txt2 = @Model.purchaseOrderEntity.PurchaseDeliveryAddress;
+                                if (!string.IsNullOrEmpty(txt2))
+                                {
+                                    txt2 = txt2.Trim();
+                                }
+                            }
+                            <textarea class="" rows="3" cols="50" id="PurchaseDeliveryAddress" name="PurchaseDeliveryAddress"> @txt2</textarea>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </div>
+
+    <div class="row col-md-1" style="margin-top:12px;">
+        <input onclick="SavePurchaseOrderDetail()" type="button" style="height:40px;" class="btn btn-primary" value="Update" />
+
+        <input type="button" style="height:40px;margin-top:-65px;" data-bs-dismiss="modal" class="btn btn-secondary" value="Cancel" />
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class=" col-md-5">
+        <span style="color:darkblue;font-size:15px;">Products</span>
+        <div class="QA_table mb_30 style-scroll" style="height:160px;overflow:auto;background:#dfeffc; overflow-x:hidden;  ">
+            <table class="table cell-border table-bordered" id="ProductSearchtbl" style="font-size:12px;">
+                <thead style="position: sticky; top: 0;color:black;background:#5c9ccc ">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">ProductName</th>
+                        <th scope="col">ProductSizeOrType</th>
+                        <th scope="col">ProductPrice</th>
+                        <th scope="col">CompanyName</th>
+                    </tr>
+                </thead>
+                <tbody style="cursor:pointer">
+
+                    @if (Model != null && Model.lstProductEntities.Count > 0)
+                {
+
+                    foreach (var item in Model.lstProductEntities)
+                    {
+
+                    <tr data-ID="@item.ID" data-ProductName="@item.ProductName" data-ProductPrice="@item.ProductPrice.ToString("0.00")"  onclick="ProductSearchtblRowClick(this)" ondblclick="ProductSearchtblRowDoubleClick(this)">
+                        <td  scope="row">
+
+
+                            @item.ID
+                        </td>
+                        <td>
+
+                            @item.ProductName
+                        </td>
+                        <td>
+                            @item.ProductSizeOrType
+
+
+                        </td>
+                        <td>
+                            £@item.ProductPrice.ToString("0.00")
+
+
+                        </td>
+                        <td>
+
+                            @item.CompanyName
+                        </td>
+
+                    </tr>
+
+
+                    }
+
+                }
+
+                else
+                {
+                    @*<tr>
+                        <td class="alert alert-danger text-center" colspan="20">No Record Found</td>
+                    </tr>*@
+                }
+
+
+            </table>
+        </div>
+
+    </div>
+
+    <div class="row col-md-1">
+        <input onclick="MoveItemtoBasket()" style="width: 40px; height: 35px !important; margin-left: 20px; margin-top: 22px;" type="button" class="form-control btn btn-primary" value=">" />
+        <br />
+        <input onclick="RemoveItemfromBasket()" style="width: 40px; height: 35px !important; margin-left: 20px; margin-top: -68px;" type="button" class="form-control btn btn-primary" value="<" />
+    </div>
+
+    <div class=" col-md-5">
+        <span style="color:darkblue;font-size:15px;">Basket</span>
+        <div class="QA_table mb_30 style-scroll" style="height:160px;overflow:scroll;background:#dfeffc; overflow-x:hidden;  ">
+            <table class="table cell-border table-bordered" id="BasketSearchtbl" style="font-size:12px;">
+                <thead style="position: sticky; top: 0;color:black;background:#5c9ccc ">
+                    <tr>
+                        <th scope="col">PurchaseProductID</th>
+                        <th scope="col">ProductName</th>
+                        <th scope="col">ProductPrice</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">TotalPrice</th>
+                    </tr>
+                </thead>
+                <tbody style="cursor:pointer">
+                    @{
+                    decimal currenttotalbasket =0;
+                    }
+                    @if (Model != null && Model.Lstz_Tbl_Temp_Purchase_Orders.Count > 0)
+                {
+
+                    foreach (var item in Model.Lstz_Tbl_Temp_Purchase_Orders)
+                    {
+                    currenttotalbasket = currenttotalbasket + @item.TotalPrice;
+                         <tr data-Lock="1" data-PurchaseItemId="@item.PurchaseItemId" data-ID="@item.PurchaseProductId"
+                        data-ProductName="@item.ProductName"
+                        data-ProductPrice="@item.ProductPrice.ToString("0.00")"
+                        data-Quantity="@item.Quantity"
+                        data-TotalPrice="@item.TotalPrice.ToString("0.00")"
+                        onclick="BasketSearchtblRowClick(this)" ondblclick="LoadUpdateQuantity(this)">
+                        <td class="PurchaseProductId" scope="row">
+
+
+                            @item.PurchaseProductId
+                        </td>
+                        <td class="ProductName">
+
+                            @item.ProductName
+                        </td>
+
+                        <td class="ProductPrice">
+                            £@item.ProductPrice.ToString("0.00")
+
+
+                        </td>
+                        <td class="Quantity">
+                            @item.Quantity
+
+
+                        </td>
+                        <td class="TotalPrice">
+
+                            £@item.TotalPrice.ToString("0.00")
+                        </td>
+
+                    </tr>
+
+
+                    }
+
+                }
+
+                else
+                {
+@*                    <tr>
+                        <td class="alert alert-danger text-center" colspan="20">No Record Found</td>
+                    </tr>*@
+                }
+
+
+            </table>
+        </div>
+
+    </div>
+</div>
+<div class="row col-md-12">
+
+    <div class="col-md-1"></div>
+    <div class="col-md-4" style="margin-bottom:5px;">
+        <div class="col-md-3"></div>
+        <label  style="font-size: 12px;float:right;" class="form-label col-md-5" for="totalpurchasecost">Total Count of Products : @Model.lstProductEntities.Count</label>
+
+
+    </div>
+    <div class="col-md-4"></div>
+    <div class="row col-md-3" style="margin-bottom:5px;">
+        
+
+        <label style="font-size: 12px" class="form-label col-md-2" for="totalpurchasecost">Total </label>
+        <input style="width:120px;background:yellow;" type="text" class="form-control col-md-2" id="txtbaskettotal" readonly value="£@currenttotalbasket" />
+
+    </div>
+
+
+</div>
+<script>
+    $('#PurchaseOrderDate,#PurchaseRequiredDate').datepicker({
+        format: 'dd/mm/yyyy',
+        todayBtn: "linked",
+        autoclose: true,
+        startDate: "-100y"
+    });
+</script>

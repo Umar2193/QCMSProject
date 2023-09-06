@@ -1,0 +1,260 @@
+﻿
+@{
+    ViewBag.Title = "Add Product";
+}
+
+
+<style>
+    .status_btn_red {
+        display: inline-block;
+        padding: 2px 15px;
+        font-size: 11px;
+        font-weight: 300;
+        color: #fff !important;
+        background: #d30544;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+        text-transform: capitalize;
+        white-space: nowrap;
+        min-width: 70px;
+        text-align: center;
+    }
+</style>
+@*<script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                "order": [[0, "asc"]]
+
+            });
+        });
+    </script>*@
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <div class="white_card card_height_100 mb_30">
+                        <div class="white_card_body">
+                            <div class="card-body">
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label" for="inputEmail4">Category</label>
+                                            <select id="inputEmail4" class="form-control">
+                                                <option selected="">Choose...</option>
+                                                <option value="1">
+                                                    Equipment
+                                                </option>
+                                            </select>
+                                          
+                                        </div>
+                                        <div class=" col-md-6">
+                                            <label class="form-label" for="inputPassword4">ProductName</label>
+                                            <input type="text" class="form-control" id="inputPassword4" placeholder="ProductName">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="inputAddress">ProductSizeOrType</label>
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="ProductSizeOrType">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="inputAddress2">ProductPrice</label>
+                                        <input type="number" class="form-control" id="inputAddress2" placeholder="ProductPrice">
+                                    </div>
+                                   
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                @*<h3 class="m-0"> Product List</h3>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div class="QA_section">
+                            <div class="white_box_tittle list_header">
+                                <h4> Product List</h4>
+                                <div class="box_right d-flex lms_block">
+                                    <div class="serach_field_2">
+                                        <div class="input-group mb-3">
+                                            <label class="input-group-text" for="inputGroupSelect01">
+                                                Select Client :
+                                            </label>
+                                            <select class="form-select" id="inputGroupSelect01">
+                                                <option value="1">1st Step Solutions ltd</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="add_button ms-2">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalLong2"class="btn_1">Add Product</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="QA_table mb_30">
+                                <!-- table-responsive -->
+                                <table class="table lms_table_active " id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ProductId</th>
+                                            <th scope="col">CategoryCode</th>
+                                            <th scope="col">ProductName</th>
+                                            <th scope="col">ProductSupplierId</th>
+                                            <th scope="col">ProductSizeOrType</th>
+                                            <th scope="col">ProductPrice</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Actions</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row"> 61680</td>
+                                            <td>
+                                                Accessories
+                                            </td>
+
+                                            <td>
+                                                Invoice 00143666
+                                            </td>
+                                            <td>
+                                                2849
+                                            </td>
+                                            <td>
+                                                31/08/22
+                                            </td>
+                                            <td>
+                                                £2,225.00
+                                            </td>
+                                            <td><a href="#" class="status_btn">Active</a></td>
+                                            <td><a href="#" class="status_btn_red">Edit</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"> 61682</td>
+                                            <td>
+                                                Accessories
+                                            </td>
+
+                                            <td>
+                                                Invoice 00143123
+                                            </td>
+                                            <td>
+                                                3123
+                                            </td>
+                                            <td>
+                                                05/08/22
+                                            </td>
+                                            <td>
+                                                £2,245.00
+                                            </td>
+                                            <td><a href="#" class="status_btn">Active</a></td>
+                                            <td><a href="#" class="status_btn_red">Edit</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"> 61685</td>
+                                            <td>
+                                                Accessories
+                                            </td>
+
+                                            <td>
+                                                Invoice 00143666
+                                            </td>
+                                            <td>
+                                                3987
+                                            </td>
+                                            <td>
+                                                31/08/22
+                                            </td>
+                                            <td>
+                                                £2,221.00
+                                            </td>
+                                            <td><a href="#" class="status_btn">Active</a></td>
+                                            <td><a href="#" class="status_btn_red">Edit</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"> 61681</td>
+                                            <td>
+                                                Accessories
+                                            </td>
+
+                                            <td>
+                                                Invoice 00143666
+                                            </td>
+                                            <td>
+                                                3849
+                                            </td>
+                                            <td>
+                                                31/08/23
+                                            </td>
+                                            <td>
+                                                £4,125.00
+                                            </td>
+                                            <td><a href="#" class="status_btn">Active</a></td>
+                                            <td><a href="#" class="status_btn_red">Edit</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row"> 61681</td>
+                                            <td>
+                                                Accessories
+                                            </td>
+
+                                            <td>
+                                                Invoice 00143666
+                                            </td>
+                                            <td>
+                                                2849
+                                            </td>
+                                            <td>
+                                                23/08/22
+                                            </td>
+                                            <td>
+                                                £6,225.00
+                                            </td>
+                                            <td><a href="#" class="status_btn">Active</a></td>
+                                            <td><a href="#" class="status_btn_red">Edit</a></td>
+                                        </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+
+            </div>
+        </div>
+    </div>
+</div>

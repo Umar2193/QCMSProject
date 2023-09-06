@@ -1,0 +1,97 @@
+[
+  {
+    "outputFileName": "wwwroot/TemplateContent/js/main.min.js",
+    "inputFiles": [
+      "wwwroot/TemplateContent/js/jquery-3.4.1.min.js",
+      "wwwroot/TemplateContent/js/popper.min.js",
+      "wwwroot/TemplateContent/js/metisMenu.js",
+      "wwwroot/TemplateContent/vendors/count_up/jquery.waypoints.min.js",
+      "wwwroot/TemplateContent/vendors/count_up/jquery.counterup.min.js",
+      "wwwroot/TemplateContent/vendors/niceselect/js/jquery.nice-select.min.js",
+      "wwwroot/TemplateContent/vendors/owl_carousel/js/owl.carousel.min.js",
+      "wwwroot/templatecontent/js/toastr.min.js",
+      "wwwroot/templatecontent/js/chosen.jquery.min.js",
+      "wwwroot/templatecontent/js/jquery.datatables.min.js",
+      "wwwroot/templatecontent/js/datatables.buttons.min.js",
+      "wwwroot/templatecontent/js/datatables.select.min.js",
+      "wwwroot/templatecontent/js/datatables.datetime.min.js",
+      "wwwroot/templatecontent/js/datatables.editor.min.js",
+
+      "wwwroot/TemplateContent/vendors/progressbar/jquery.barfiller.js",
+      "wwwroot/TemplateContent/vendors/tagsinput/tagsinput.js",
+      "wwwroot/TemplateContent/vendors/text_editor/summernote-bs4.js",
+      "wwwroot/TemplateContent/vendors/scroll/perfect-scrollbar.min.js",
+      "wwwroot/TemplateContent/vendors/scroll/scrollable-custom.js",
+
+      "wwwroot/TemplateContent/js/custom.js",
+      "wwwroot/templatecontent/js/jquery-ui.min.js",
+      "wwwroot/templatecontent/js/jquery.jqgrid.src.js"
+
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/TemplateContent/js/main_footer.min.js",
+    "inputFiles": [
+      "wwwroot/TemplateContent/js/custom.js",
+      "wwwroot/templatecontent/js/jquery-ui.min.js",
+      "wwwroot/templatecontent/js/jquery.jqgrid.src.js",
+      "wwwroot/templatecontent/js/pagesscript/company.js",
+      "wwwroot/templatecontent/js/pagesscript/contract.js"
+
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/TemplateContent/css/mainstyle.min.css",
+    "inputFiles": [
+      "wwwroot/templatecontent/css/chosen.min.css",
+      "wwwroot/TemplateContent/css/bootstrap.min.css",
+      "wwwroot/TemplateContent/vendors/themefy_icon/themify-icons.css",
+      "wwwroot/TemplateContent/vendors/niceselect/css/nice-select.css",
+      "wwwroot/TemplateContent/vendors/owl_carousel/css/owl.carousel.css",
+      "wwwroot/TemplateContent/vendors/gijgo/gijgo.min.css",
+      "wwwroot/TemplateContent/vendors/font_awesome/css/all.min.css",
+      "wwwroot/TemplateContent/vendors/tagsinput/tagsinput.css",
+      "wwwroot/TemplateContent/vendors/datepicker/date-picker.css",
+      "wwwroot/TemplateContent/vendors/vectormap-home/vectormap-2.0.2.css",
+      "wwwroot/TemplateContent/vendors/scroll/scrollable.css"
+
+
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/TemplateContent/css/mainstyle2.min.css",
+    "inputFiles": [
+
+      "wwwroot/TemplateContent/vendors/text_editor/summernote-bs4.css",
+      "wwwroot/TemplateContent/vendors/morris/morris.css",
+      "wwwroot/TemplateContent/vendors/material_icon/material-icons.css",
+      "wwwroot/TemplateContent/css/metisMenu.css",
+      "wwwroot/TemplateContent/css/colors/default.css",
+      "wwwroot/templatecontent/css/toastr.min.css",
+      "wwwroot/templatecontent/css/jquery-ui.min.css",
+      "wwwroot/templatecontent/css/font-awesome.min.css",
+      "wwwroot/templatecontent/css/ui.jqgrid.css"
+
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

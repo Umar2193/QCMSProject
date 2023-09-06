@@ -1,0 +1,230 @@
+﻿@model Entity.CompanyEntity
+@{
+    Layout = null;
+}
+<style>
+    #tblsite td, #tblsite th {
+        padding:2px !important;
+    }
+    #frmCompanySave .form-label {
+        font-size:10px;
+    }
+
+    #frmCompanySave .form-control {
+        height:23px;
+    }
+
+    #frmCompanySave input[type="checkbox"] {
+        height:16px;
+        margin-left:5px;
+    }
+</style>
+<div class="col-lg-12">
+    <div class="white_card card_height_100 mb_30">
+        <div class="white_card_body">
+            <div class="card-body">
+                <form id="frmCompanySave">
+                    <input type="hidden" name="CompanyIsCustomer" id="hdnCompanyIsCustomer" value="false" />
+                    <input type="hidden" name="CompanyIsSubcontractor" id="hdnCompanyIsSubcontractor" value="false" />
+                    <input type="hidden" name="CompanyIsEnquirer" id="hdnCompanyIsEnquirer" value="false" />
+                    <input type="hidden" name="CompanyApproved" id="hdnCompanyApproved" value="false" />
+                    <div class="row col-md-12 mb-12">
+                        <input class="btn btn-primary col col-md-1" style="float:right;position:absolute;right:22px;top:42px" type="button" value="OK" onclick="SaveCompanyInformation();" />
+                    </div>
+                    <div class="row col-md-12 mb-3">
+                        
+                       <div class="row col-md-4">
+                                <label class="form-label col-md-4" for="CompanyId">CompanyId</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control " id="CompanyId" name="CompanyId" value="@Model.CompanyId" readonly>
+                                </div>
+
+                            </div>
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyName">CompanyName</label>
+                            <div class="col-md-8">
+                                <input type="text" value="@Model.CompanyName" name="CompanyName" class="form-control" id="CompanyName" placeholder="CompanyName">
+                            </div>
+                        </div>
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyShortCode">ShortCode</label>
+                            <div class="col-md-7">
+                                <input type="text" value="@Model.CompanyShortCode" name="CompanyShortCode" max="20" class="form-control" id="CompanyShortCode" placeholder="CompanyShortCode">
+                            </div>
+                        </div>
+                          
+                     
+                       
+
+                    </div>
+
+                
+
+
+                    <div class="row col-md-12 mb-3">
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyTown">Town</label>
+                            <div class="col-md-7">
+                                <input type="text" value="@Model.CompanyTown" name="CompanyTown" class="form-control" id="CompanyTown" placeholder="CompanyTown">
+                            </div>
+                        </div>
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyShortCode">MainFax</label>
+                            <div class="col-md-8">
+                                <input type="text" value="@Model.CompanyMainFax" name="CompanyMainFax" class="form-control" id="CompanyMainFax" placeholder="CompanyMainFax">
+                            </div>
+                        </div>
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyCounty">County</label>
+                            <div class="col-md-7">
+                                <input type="text" value="@Model.CompanyCounty" name="CompanyCounty" class="form-control" id="CompanyCounty" placeholder="CompanyCounty">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row col-md-12 mb-3">
+                       
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyAccountNo">AccountNo</label>
+                            <div class="col-md-7">
+                                <input type="text" value="@Model.CompanyAccountNo" name="CompanyAccountNo" class="form-control" id="CompanyAccountNo" placeholder="CompanyAccountNo">
+                            </div>
+                        </div>
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyPostCode">PostCode</label>
+                            <div class="col-md-8">
+                                <input type="text" value="@Model.CompanyPostCode" name="CompanyPostCode" class="form-control" id="CompanyPostCode" placeholder="CompanyPostCode">
+                            </div>
+                        </div>
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyCreditDays">CreditDays</label>
+                            <div class="col-md-7">
+                                <input type="text" value="@Model.CompanyCreditDays" max="5" name="CompanyCreditDays" class="form-control" id="CompanyCreditDays" placeholder="CompanyCreditDays">
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="row col-md-12 mb-3">
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyPostCode">MainTelephone</label>
+                            <div class="col-md-7">
+                                <input type="text" value="@Model.CompanyMainTelephone" name="CompanyMainTelephone" class="form-control" id="CompanyMainTelephone" placeholder="MainTelephone">
+
+                            </div>
+                        </div>
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyMentorRef">MentorRef</label>
+                            <div class="col-md-8">
+                                <input type="text" value="@Model.CompanyMentorRef" max="10" name="CompanyMentorRef" class="form-control" id="CompanyMentorRef" placeholder="MentorRef">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-md-12 mb-3">
+                        <div class="row col-md-4">
+                            <label class="form-label col-md-4" for="CompanyName">AddressLines</label>
+                            <div class="col-md-7">
+                                <textarea style="height:77px !important;" rows="3" cols="5" type="text" name="CompanyAddressLines" class="form-control" id="CompanyAddressLines" placeholder="CompanyAddressLines">@Model.CompanyAddressLines</textarea>
+                            </div>
+                        </div>
+                        <div class="row col-md-4">
+                            <fieldset style="padding:4px !important;height:77px !important;">
+                                <legend></legend>
+                                <div class="row col-md-12 mb-3">
+                                    <div class="row col-md-6">
+                                        <label class="form-label col-md-7" for="CompanyIsCustomer">IsCustomer</label>
+                                        <div class="col-md-5">
+                                            <input type="checkbox" value="@Model.CompanyIsCustomer" checked="@Model.CompanyIsCustomer" id="CompanyIsCustomer" class="form-group" />
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row col-md-6">
+                                        <label class="form-label col-md-7" for="CompanyIsSubcontractor">IsSubcontractor</label>
+                                        <div class="col-md-5">
+                                            <input type="checkbox" value="@Model.CompanyIsSubcontractor" checked="@Model.CompanyIsSubcontractor" id="CompanyIsSubcontractor" class="form-group" />
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row col-md-12 mb-3">
+                                    <div class="row col-md-6">
+                                        <label class="form-label col-md-7" for="CompanyIsCustomer">IsEnquirer</label>
+                                        <div class="col-md-5">
+                                            <input type="checkbox" value="@Model.CompanyIsEnquirer" checked="@Model.CompanyIsEnquirer" id="CompanyIsEnquirer" class="form-group" />
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row col-md-6">
+
+                                        <label class="form-label col-md-7" for="CompanyApproved">Approved</label>
+                                        <div class="col-md-5">
+                                            <input type="checkbox" value="@Model.CompanyApproved" checked="@Model.CompanyApproved" id="CompanyApproved" class="form-group" />
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </div>
+                        <div class="row col-md-4" style="margin-left:5px;">
+                            @*<label class="form-label col-md-4" for="CompanyShortCode">ShortCode</label>*@
+                            <div class="col-md-11 style-scroll" style="height:77px;overflow:scroll;border:1px solid;overflow-x:auto;background-color:lightgray">
+                                <div style="position: sticky; top: 0; background-color: grey;margin-left:-12px;width:354px">
+                                    <span style="color:white;">Sites</span>
+                                    <span style="float:right;margin-right:10px;color:white;">Delete</span>
+                                </div>
+                                <table id="tblsite" class="table">
+                                    <thead style="display:none">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="companysitestbltrtd">
+                                        @if (Model != null && Model.lstsites != null && Model.lstsites.Count > 0)
+                                        {
+                                            foreach (var item in Model.lstsites)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @item.ContractLocation
+                                                    </td>
+                                                    <td><i title="Delete" style="color:red" class="fa fa-trash-alt"></i></td>
+                                                </tr>
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td>No Sites</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                            <input onclick="AddCompanySite('@Model.CompanyId','@Model.CompanyName')" class="btn btn-primary col col-md-1" style="height:35px;position:absolute;right:35px;" type="button" value="Add" />
+                        </div>
+                      
+                    </div>
+                </form>
+                <div class="row col-12-12 col-md-12"  style="margin-top:-35px;">
+                    <fieldset>
+                        <legend>People</legend>
+                        <div class="style-scroll" id="divtblPeopleGrid_History" style="max-height:312px;overflow:scroll;overflow-x:hidden;padding:5px;">
+                            @Html.Partial("PeopleGridHistory.cshtml",Model.lstPeople)
+                        </div>
+                    </fieldset>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
