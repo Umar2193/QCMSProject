@@ -49,7 +49,9 @@
 
 <script>
     $(document).ready(function () {
+        if (@Model != null && @Model.Count > 0){
         $('#dataTables-Peopletbl_History').DataTable();
+        }
     });
 
 </script>

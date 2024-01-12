@@ -38,4 +38,8 @@ namespace Entity
         public bool bln_Amount_Updated { get; set; }
 
     }
+    public class PurchaseMaxItemValue
+    {
+        public int MaxPurchaseItemID { get; set; }
+    }
 }

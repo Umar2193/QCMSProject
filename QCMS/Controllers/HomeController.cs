@@ -69,8 +69,17 @@ namespace QCMS.Controllers
 					var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 					var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
-					// Sign in the user with the claimsPrincipal
-					 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
+                    var authProperties = new AuthenticationProperties
+                    {
+                        // Set other properties as needed
+
+                        // Set the expiration time for the cookie
+                        ExpiresUtc = DateTime.UtcNow.AddDays( 1440), // Adjust the expiration time based on rememberMe
+                        IsPersistent = true
+                    };
+
+                    // Sign in the user with the claimsPrincipal
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal,authProperties);
  
 					return RedirectToAction("Index", "Company");
 				}

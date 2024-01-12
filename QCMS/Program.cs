@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.DataProtection;
 using QCMS;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,10 +11,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 	   {
 		   options.LoginPath = "/Home/Login"; // Specify the login page URL
 		   options.LogoutPath = "/Home/Logout"; // Specify the logout page URL
-	   });
-		
+           options.ExpireTimeSpan = TimeSpan.FromDays(50);
+          
+       });
 
+//builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(Directory.GetCurrentDirectory())).SetDefaultKeyLifetime(TimeSpan.FromDays(30));
 var app = builder.Build();
+
 app.UseAuthentication();
 
 

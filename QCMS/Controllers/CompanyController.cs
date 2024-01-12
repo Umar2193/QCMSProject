@@ -13,19 +13,19 @@ namespace QCMS.Controllers
     {
         private ICompanyRepository _companyRepository = new CompanyRepository();
 
-        private readonly IOptions<ConnectionClass> _options;
+        //private readonly IOptions<ConnectionClass> _options;
 
-        public CompanyController(IOptions<ConnectionClass> options)
+        public CompanyController()
         {
 
-            _options = options;
+            //_options = options;
 
         }
 
 	
 		public IActionResult Index()
         {
-            var con = _options.Value.Connection;
+            
 
 
             var lst = _companyRepository.GetCompanyList();

@@ -8,23 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace DAL
 {
     public class DapperManager
     {
-       private static IConfiguration _configuration;
+        private static IConfiguration _configuration;
         //public DapperManager(IConfiguration configuration)
         //{
         //   _configuration = configuration;
         //}
         //_configuration.GetSection("AppSettings:Connection").Value;
-        private string ConnectionString = @"Server=DESKTOP-EM6BMB7\SQLEXPRESS;Database=QCMS;Integrated Security =true;User ID=r;Password=sa123;";
-        
+        //private string ConnectionString = @"Server=.;Database=QCMS;Integrated Security =true;User ID=r;Password=sa123;providerName=System.Data.SqlClient";
+        //private string ConnectionString = @"Server=127.0.0.1;Database=qcms;Uid=admin;Pwd=admin;";
+        private string ConnectionString = @"Server=n1nlmysql35plsk.secureserver.net;Port=3306;Database=dbEnviraMech;Uid=vasrabani;Pwd=admin_1234;";
+
         public bool CheckConnection()
         {
             bool result;
-            using (var connection = new SqlConnection(ConnectionString))
+            using (var connection = new MySqlConnection(ConnectionString))
             {
 
                 try
@@ -34,7 +37,7 @@ namespace DAL
                     result = true;
 
                 }
-                catch (SqlException ex)
+                catch (MySqlException ex)
                 {
                     result = false;
                     connection.Close();
@@ -46,7 +49,7 @@ namespace DAL
         public IEnumerable<T> Get<T>(string spname, dynamic parameter = null, IDbTransaction transaction = null, bool buffered = true, int? timeout = null, CommandType? commandtype = null) where T : class
         {
             IEnumerable<T> result = new List<T>();
-            using (var connection = new SqlConnection(ConnectionString))
+            using (var connection = new MySqlConnection(ConnectionString))
             {
 
                 try
@@ -59,7 +62,7 @@ namespace DAL
                                                  commandType: commandtype);
                     connection.Close();
                 }
-                catch (SqlException ex)
+                catch (MySqlException ex)
                 {
                     connection.Close();
                     throw ex;
@@ -72,7 +75,7 @@ namespace DAL
         public int Insert<T>(string spname, dynamic parameter, IDbTransaction transaction = null, bool buffered = true, int? timeout = null, CommandType? commandtype = null) where T : struct
         {
             int result = 0;
-            using (var connection = new SqlConnection(ConnectionString))
+            using (var connection = new MySqlConnection(ConnectionString))
             {
 
                 try
@@ -86,7 +89,7 @@ namespace DAL
                     connection.Close();
 
                 }
-                catch (SqlException ex)
+                catch (MySqlException ex)
                 {
                     connection.Close();
                     throw ex;
@@ -99,7 +102,7 @@ namespace DAL
         {
             int result = 0;
 
-            using (var connection = new SqlConnection(ConnectionString))
+            using (var connection = new MySqlConnection(ConnectionString))
             {
                 try
                 {
@@ -111,7 +114,7 @@ namespace DAL
                               commandType: commandtype);
                     connection.Close();
                 }
-                catch (SqlException ex)
+                catch (MySqlException ex)
                 {
                     connection.Close();
                     throw ex;
@@ -124,7 +127,7 @@ namespace DAL
         public int Update<T>(string spname, dynamic parameter, IDbTransaction transaction = null, bool buffered = true, int? timeout = null, CommandType? commandtype = null) where T : struct
         {
             int result = 0;
-            using (var connection = new SqlConnection(ConnectionString))
+            using (var connection = new MySqlConnection(ConnectionString))
             {
                 try
                 {
@@ -136,7 +139,7 @@ namespace DAL
                               commandType: commandtype);
                     connection.Close();
                 }
-                catch (SqlException ex)
+                catch (MySqlException ex)
                 {
                     connection.Close();
                     throw ex;
@@ -148,7 +151,7 @@ namespace DAL
         public int Delete<T>(string spname, dynamic parameter, IDbTransaction transaction = null, bool buffered = true, int? timeout = null, CommandType? commandtype = null) where T : struct
         {
             int result = 0;
-            using (var connection = new SqlConnection(ConnectionString))
+            using (var connection = new MySqlConnection(ConnectionString))
             {
                 try
                 {
@@ -160,7 +163,7 @@ namespace DAL
                               commandType: commandtype);
                     connection.Close();
                 }
-                catch (SqlException ex)
+                catch (MySqlException ex)
                 {
                     connection.Close();
                     throw ex;
@@ -174,7 +177,7 @@ namespace DAL
             Tuple<List<T1>, List<T2>> result;
             var obj1 = new List<T1>();
             var obj2 = new List<T2>();
-            using (var connection = new SqlConnection(ConnectionString))
+            using (var connection = new MySqlConnection(ConnectionString))
             {
                 try
                 {
@@ -193,7 +196,7 @@ namespace DAL
                     }
                     connection.Close();
                 }
-                catch (SqlException ex)
+                catch (MySqlException ex)
                 {
                     connection.Close();
                     throw ex;
@@ -204,7 +207,7 @@ namespace DAL
         public IEnumerable<T> Query<T>(string spname, dynamic parameter = null, IDbTransaction transaction = null, bool buffered = true, int? timeout = null, CommandType? commandtype = null) where T : class
         {
             IEnumerable<T> result = new List<T>();
-            using (var connection = new SqlConnection(ConnectionString))
+            using (var connection = new MySqlConnection(ConnectionString))
             {
                 try
                 {
@@ -217,7 +220,7 @@ namespace DAL
                     connection.Close();
 
                 }
-                catch (SqlException ex)
+                catch (MySqlException ex)
                 {
                     connection.Close();
                     throw ex;

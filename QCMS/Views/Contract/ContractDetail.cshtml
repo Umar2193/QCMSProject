@@ -207,7 +207,7 @@
                             @{
                                 decimal totalpurchasecost = 0;
                             }
-                            @if (Model != null && Model.lstPurcaseOrder.Count > 0)
+                            @if (Model != null && Model.lstPurcaseOrder !=null && Model.lstPurcaseOrder.Count > 0)
                             {
                                
                                 foreach (var item in Model.lstPurcaseOrder)
